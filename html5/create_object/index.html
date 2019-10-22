@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        'use strict'
+        function Animal(name) {
+            this.name = name;
+        }
+        function Person(name) {
+            this.name = name;
+        }
+        Person.prototype.sing = function() {
+            console.log('唱歌');
+        }
+        Person.prototype.getPlanet = function() {
+            return this.planet;
+        }
+        Person.prototype = new Animal(earth);//原型链
+        Person.prototype.getName = function(){
+            console.log(this.name);
+        }
+        var woniu = new Person('蜗牛');
+        woniu.getPlanet();//继承父类方法
+        // woniu.sing();
+    </script>
+</body>
+</html>

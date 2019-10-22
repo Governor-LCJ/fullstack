@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="./style.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="book p3d">
+        <div class="back-cover p3d">
+            <div class="page back flip"></div>
+            <div class="page front p3d">
+                <div class="shadow"></div>
+                <div class="dino"></div>
+            </div>
+        </div>
+        <div class="front-cover p3d">
+            <div class="page front flip p3d">
+                <p>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam fermentum nisl quis nulla eleifend
+                    dignissim.
+                    Curabitur varius lobortis tincidunt. Maecenas gravida, nulla quis luctus imperdiet, ipsum nibh
+                    consectetur
+                    ante, in sodales massa tortor eget neque. Donec porta ligula massa, id sagittis est. Ut nisl tellus,
+                    faucibus
+                    nec feugiat ut, laoreet iaculis felis. Suspendisse ultrices mauris vel tellus suscipit commodo.
+                    Integer vitae
+                    tortor erat. Pellentesque non tempor nisi
+                </p>
+            </div>
+            <div class="page back"></div>
+        </div>
+    </div>
+    <script>
+        (function (window, document) {
+            var prefixes = ['Webkit', 'Moz', 'ms', 'o'],
+                book = document.querySelectorAll('.book')[0],
+                page = document.querySelectorAll('.front-cover')[0],
+                dino = document.querySelectorAll('.dino')[0],
+                shadow = document.querySelectorAll('.shadow')[0],
+                hold = false,
+                centerPoint = window.innerWidth / 2,
+                pageSize = 300,
+                clamp = function (val, min, max) {
+                    return Math.max(min, Math.min(val, max))
+                }
+
+            // 按下鼠标时候的执行事件
+            page.onmousedown = function () {
+                hold = true
+                console.log("down")
+            }
+            // 鼠标放开的时候执行的事件
+            window.onmouseup = function () {
+                if (hold) {
+                    hold = false
+                }
+            }
+            // 在窗口被调整大小的时候执行的事件
+            window.onresize = function () {
+                // console.log(123)
+                centerPoint = window.innerWidth / 2
+            }
+            window.onmousemove = function (evt) {
+                if (!hold) {
+                    return
+                }
+                // console.log(evt)
+                var angle = clamp((centerPoint - evt.pageX + pageSize) / pageSize * -90, -180, 0), i, j;
+                for (i = 0; i < prefixes.length; i++) {
+                    page.style[prefixes[i] + 'Transform'] = 'rotateY(' + angle + 'deg)';
+                    dino.style[prefixes[i] + 'Transform'] = 'rotateX(' + (angle / 2) + 'deg)';
+                    book.style[prefixes[i] + 'Transform'] = 'rotateX(' + (60 + angle / 8) + 'deg)';
+                    shadow.style[prefixes[i] + 'Transform'] = 'translateZ(1px) skewX(' + (angle / 5) + 'deg)';
+                }
+            }
+
+        })(window, document)
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,39 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+#page-one{
+    background-color: yellow;
+    text-align: center;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+button{
+    width: 300px;
+    outline: none;
+    border: 1px solid transparent;
+    padding: 6px 12px;
+    background-color: blue;
+    color: red
+}
+#page-one h1 {
+    margin: 30px 50px;
+}
+#page-one p {
+    margin: 30px;
+}
+.screen{
+    margin-top: 10px;
+    /* display: flex; */
+}
+.screen .block{
+    width: 49%;
+    height: 200px;
+    margin: 1px;
+    border: 1px solid #ffffff;
+    background-color: red;
+    float: left;
+}

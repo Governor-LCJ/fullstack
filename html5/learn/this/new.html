@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //手写new功能
+        function objectFactory() {
+            //创建一个空对象
+            //执行[[prototype]]（显式原型链）连接 __proto__(隐式原型链)
+            //让this指向新对象
+            const obj = {}
+            const Constructor = [].shift.call(arguments)//shift 从首部删除，返回删除值
+            obj.__proto__ = Constructor.prototype
+            const ret = Constructor.apply(obj,arguments)//将作用域指回obj
+            return typeof ret === 'object'? ret : obj
+        }
+        function People(name, age) {
+            this.name = name;
+            this.age = age;
+        }
+        console.log(new People('wn', 18))
+        console.log(objectFactory( People,'wn', 18))
+    </script>
+</body>
+</html>

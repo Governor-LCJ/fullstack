@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="./style.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="wrapper">
+        <video class="flex" width="765" height="430" src="https://quan.qq.com/video/1098_f93c5f7774f9e11252ec40c25139c3c4" loop
+            controls></video>
+        <div class="speed">
+            <div class="speed-bar" onmousedown='handleMove'>1x</div>
+        </div>
+    </div>
+
+    <script>
+        const speed = document.querySelector('.speed')
+        const bar = speed.querySelector('.speed-bar')
+        const video = document.querySelector('.flex')
+
+        function handleMove(e) {
+            //offsetTop:f=该容器距离浏览器顶部的高度
+                const y = e.pageY - this.offsetTop
+                const percent = y / this.offsetHeight
+                const min = 0.4
+                const max = 4
+                const height = Math.round(percent * 100) + '%'
+                const playbackRate = percent * (max - min) + min
+                bar.style.height = height
+                video.playbackRate = playbackRate
+                bar.textContent = playbackRate.toFixed(2)+'x'
+        }
+        speed.addEventListener('mousemove', handleMove)
+    </script>
+</body>
+
+</html>

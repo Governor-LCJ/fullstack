@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var a = {
+            user:'woniu',
+            fn:function(a,b) {
+                console.log(this.user)
+                console.log(a +b)
+            }
+        }
+        var b = a.fn
+        b()//this指向window，无法输出user
+
+        //修改this作用域
+        // b.call(a)
+        b.call(a,1,3)
+
+
+    </script>
+    <script>
+        var a = {
+            user:'woniu',
+            fn:function() {
+                console.log(this.user)
+            }
+        }
+        var b = a.fn
+
+        // b.apply(a)
+        b.apply(a,[1,2])//需要以数组方式进行传参
+        b.apply(null)//this指向为window
+        b()
+    </script>
+
+    <script>
+        var a = {
+            user:'woniu',
+            fn:function() {
+                console.log(this.user)
+            }
+        }
+        var b = a.fn
+        var c = b.bind(a)//bind返回的是函数，需要其它接受
+        c(1,2)//bind接收参数
+        c()
+    </script>
+<!-- call apply bind 显式绑定 -->
+
+    <script>
+        function Foo(a) {
+            this.a = a
+            console.log(this.a)
+        }
+        new Foo(2)//this指向Foo
+    </script>
+</body>
+</html>
