@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 预编译，浏览器对代码进行扫瞄，报错 -->
+    <!-- <script>
+        console.log(a)
+        var a = 123
+        //无法打印
+
+        test()
+        function test() {
+            console.log('hello world')
+        }
+        //可以输出
+
+        // 函数声明整体变量提升
+        //变量  声明提升
+        //var a = 123
+        //=>
+        //var a     被提升
+        //a = 123   未提升
+    </script> -->
+    <!-- <script>
+        //任何变量未经声明就进行赋值，那么该变量就会成为全局变量
+        //一切声明的全局变量，都归 window 所有
+
+        function fn(a) {
+            console.log(a)
+            var a = 123
+            console.log(a)
+            function a() {}
+            console.log(a)
+            var b = function() {}//函数表达式
+            console.log(b)
+            function d() {}
+            var d = a
+            console.log(d)
+        }
+
+        fn(1)
+    </script> -->
+    <!-- <script>
+        function test(a, b) {
+            console.log(a)
+            //
+            c = 0;
+            var c;
+            a = 3
+            b = 2
+            console.log(b)
+            function b() {}
+            function d() {}
+            console.log(b)
+        }
+        // AO{
+        //     a:undefined 1
+        //     b:undefined function() {}
+        //     c:undefined 0
+        //     d:function() {}
+        // }
+        test(1)
+    </script> -->
+    <script>
+        // var global = 10
+        // function fn(){
+        //     console.log(global)
+        // }
+        // // GO{
+        // //     global:undefined
+        // //     fn:function() {}
+        // // }
+        
+        global = 100
+        function fn(){
+            console.log(global)
+            global = 200
+            console.log(global)
+            var global = 300
+        }
+        fn()
+        var global = 300
+        // GO{
+        //     global:undefined
+        // }
+        // AO{
+        //     global:undefined
+        // }
+    </script>
+</body>
+</html>

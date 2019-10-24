@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 递归，找到公式，判定条件 -->
+    <script>
+        // function mul(n){
+        //     var num = 1;
+        //     for(let i = 1; i <= n; i++){
+        //         num = num * 1;
+        //     }
+        //     return num
+        // }
+
+        //递归， 一定能找到一个合适的数学公式 / 一定能找到一个出口
+        function mul(n){
+            if(n == 1 || n == 0){
+                return 1
+            }
+            return n * mul(n - 1)
+        }
+        console.log(mul(5))
+    </script>
+
+    <script>
+        function fb(n){
+            // 斐波那契数
+            if(n == 1 || n == 2){
+                return 1
+            }
+            return fb(n - 1) + fb(n - 2)
+        }
+        console.log(fb(5))
+    </script>
+</body>
+</html>
