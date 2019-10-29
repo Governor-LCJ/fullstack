@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- 开发环境版本，包含了有帮助的命令行警告 -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <input type="text" v-model="test"><!-- v-model 双向数据绑定同步到data数据源-->
+        <div class="msg">{{test}}</div>
+
+        <div class="wrap">
+            <div class="wrap1" v-show="deng">ddhs</div><!--v-if没有DOM结构，v-show有DOM只是display为null -->
+            <div class="wrap2" v-on:click="handle">ddsm</div><!-- v-on:click（或者写成 @click） 点击事件-->
+            <div class="wrap2" @click="handle">ddsm</div>
+        </div>
+        <div class="wrap">
+            <ul>
+                <li v-for="list in newsList" :key="list">{{list.title}}--{{list.date}}</li><!-- list 是变量，可以自定义-->
+            </ul>
+        </div>
+        <div class="wrap">
+                <div class="content" v-html='content'></div>
+        </div>
+        <div class="wrap">
+                <div class="className" v-bind:class="isActive? 'active':' '">v-bind</div><!-- v-bind 用来绑定属性-->
+                <div class="wn" :class="{good:className}">wn</div>
+        </div>
+    </div>
+
+    <script>
+        var app = new Vue({
+            el:'#app',
+            data() {
+                return {
+                    message:'hello world',
+                    test:"",
+                    deng:true,
+                    isActive:true,
+                    className:true,
+                    classA:wn,
+                    classB:wnn,
+                    newsList: [
+                        {title: '全国各地的梯子遭到我国长城防火墙的禁用', date:'2019/5/31'},
+                        {title: '韩国瑜：准备承担2020年重担，让鬼混的民进党下台', date:'2019/6/1'},
+                        {title: '冠心病“救命药”单片涨价近11倍 药企：换了包装', date:'2019/6/2'},
+                        {title: '长春一天集齐雷电冰雹暴雨：有路段积水漂车，部分航班取消', date:'2019/6/3'}
+                    ],
+                    content:'<p>aaa</p>'
+                }
+            },
+            methods:{//所有方法都写入methods
+                handle() {
+                    console.log('handle-click')
+                }
+            },
+            created() {
+                console.log(created)
+            },
+            beforeCreate() {
+                console.log(beforeCreate)
+            },
+            mounted() {
+                console.log(mounted)
+            },
+            beforeMount() {
+                console.log(beforeMount)
+            },
+            updated() {
+                console.log(updated)
+            },
+            beforeUpdated() {
+                console.log(beforeUpdated)
+            },
+            destroyed() {
+                console.log(destroyed)
+            },
+            beforeDestroy() {
+                console.log(beforeDestroyed)
+            }
+        })
+
+    </script>
+</body>
+</html>
