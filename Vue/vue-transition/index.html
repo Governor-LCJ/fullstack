@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <link rel="stylesheet" href="./index.css">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        <button class="button" @click="showModal = true">Show　Model</button>
+        <transition name="fade">
+            <div class="modal-overlay" v-show = "showModal">
+
+            </div>
+        </transition>
+        <transition name="pop">
+            <div class="modal" v-show = "showModal">
+                <h1>Vue Transition</h1>
+                <p>The <code>&lt;transition&gt;</code> component in Vue can create wonderful animated entrances and exits.</p>
+                <button class="button" @click="showModal = false">Hide Modal</button>
+            </div>
+        </transition>
+    </div>
+
+    <script>
+        new Vue({
+            el:'#app',
+            data() {
+                return{
+                    showModal:false
+                }
+            }
+        })
+    </script>
+</body>
+</html>
