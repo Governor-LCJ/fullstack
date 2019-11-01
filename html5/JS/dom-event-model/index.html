@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .out{
+            width: 200px;
+            height: 200px;
+            background-color: rgb(197, 24, 24);
+        }
+        .in{
+            width: 100px;
+            height: 100px;
+            background: rgb(40, 192, 91);
+        }
+    </style>
+</head>
+<body>
+    <a href="./readme.md"id="md">MD</a>
+    <div class="out">
+        <div class="in">in</div>
+    </div>
+
+    <script>
+        const inNode = document.querySelector('.in');
+        const outNode = document.querySelector('.out');
+        window.addEventListener('click',function() {
+            console.log('window');
+        },true)
+        document.addEventListener('click',function() {
+            console.log('document');
+        },true)
+        document.documentElementinNode.addEventListener('click',function() {
+            console.log('documentElementinNode');
+        },true)
+        inNode.addEventListener('click',function() {
+            console.log('in');
+        },true)//一个对象click可以绑定多个事件，onclick只能绑定一个事件（会覆盖）
+        outNode.addEventListener('click',function(event) {
+            event.stopPropagation();
+            event.preventDefault();
+            console.log('out');
+        },true)
+        document.getElementById('md').addEventListener('click',(e) =>{
+            e.preventDefault();//取消默认事件
+        })
+    </script>
+</body>
+</html>
