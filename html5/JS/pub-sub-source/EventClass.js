@@ -36,7 +36,7 @@ console.log(subPub);
 const ev = new Events();
 ev.on(() => {console.log(1)})
 ev.on(() => {console.log(2)})
-for(let i =0; i<subPub.[key].length;i++) {
+for(let i =0; i<subPub.price.length;i++) {
     ev.on(subPub.price[i])
 }
 ev.emit();//执行的
