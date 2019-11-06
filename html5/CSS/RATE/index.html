@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://at.alicdn.com/t/font_1495813_zdfqrru6a3p.css">
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        /* 清除按钮默然样式 */
+        input{
+            border: none;
+            outline: none;
+            -webkit-appearance: none;
+            cursor: pointer;
+        }
+        input[name="rate"]{
+            font-family: "iconfont";
+            font-size: 30px;
+            padding-right: 10px;
+            transition: transform 0.2s ease;
+        }
+        input[name="rate"]::after{
+            content: '\e633';
+            color: #999;
+        }
+        input[name="rate"]:checked::after{
+            content: '\e606';
+            color: #ffa822;
+        }
+        input[name="rate"]:checked ~ input[name="rate"]::after{
+            
+        }
+        /* 星星只能选择后面元素，所以需要倒转 */
+        input[name="rate"]:hover{
+            transform: scale(1.2) rotateZ(180deg);
+        }
+        input[name="rate"]:hover::after{
+            content: '\e606';
+            color: #ffa822;
+        }
+        input[name="rate"]:hover ~ input[name="rate"]::after{
+            content: '\e606';
+            color: #ffa822;
+        }
+        /* 鼠标移动 */
+        .rate-content{
+            display: flex;
+            /* flex-flow: row-reverse; */
+            /* 位置倒转 */
+            float: left;
+        }
+    </style>
+</head>
+<body>
+    <!-- 评星 -->
+    <div class="rate-content">
+        <input type="radio" name="rate">
+        <input type="radio" name="rate">
+        <input type="radio" name="rate">
+        <input type="radio" name="rate">
+        <input type="radio" name="rate">
+    </div>
+</body>
+</html>
