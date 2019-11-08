@@ -7,10 +7,10 @@
         <router-link to="/goods">商品</router-link>
       </div>
       <div class="tab-item">
-       <router-link to="/ratings">评价</router-link>
+        <router-link to="/ratings">评价</router-link>
       </div>
       <div class="tab-item">
-        <router-link to="seller">商家</router-link>
+        <router-link to="/seller">商家</router-link>
       </div>
     </div>
     <router-view/>
@@ -30,7 +30,7 @@ export default {
     'v-header': header
   },
   created () {
-    this.$http.get('http://localhost:8080/static/seller.json')
+    this.$http.get('http://localhost:8080/static/seller.json', {})
       .then((res) => {
         console.log(res)
         if (res.data.errno === 0) {
@@ -43,7 +43,7 @@ export default {
 </script>
 
 <style lang="stylus">
-@import './common/stylus/mixin'
+@import './common/stylus/mixin.styl'
 .tab
   display flex
   height 40px
@@ -58,6 +58,7 @@ export default {
       display block
       font-size 14px
       color rgb(77, 85, 93)
+      -webkit-tap-highlight-color rgba(0, 0, 0, 0)
       &.router-link-active
-        color rgb(240, 20 ,20)
+        color rgb(240, 20, 20)
 </style>
