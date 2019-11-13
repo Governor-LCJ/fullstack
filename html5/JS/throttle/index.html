@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #container, #container1{
+            width: 100%;
+            height: 200px;
+            line-height: 200px;
+            text-align: center;
+            color: aliceblue;
+            background-color: black;
+            font-size: 30px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <!-- 节流 -->
+    <!-- 频繁触发的事件：用户多次点击/onmousemove  resize -->
+    <div id="container">
+        购买
+    </div>
+    <div id="container1">
+        购物车
+    </div>
+
+    <!-- <script>
+            const container = document.getElementById('container');
+            let init = 0;
+            function buyitnow() {
+                let now = new Date().getTime();
+                    container.innerHTML = init ++;
+            }
+            container.onmousemove = buyitnow;
+    </script> -->
+    <script src="https://cdn.bootcss.com/lodash.js/4.17.15/lodash.min.js"></script>
+    <!-- 节流 -->
+    <!-- 每隔一秒运行 -->
+    <script>
+        const container = document.getElementById('container');
+        let init = 0;
+        let previous = 0;
+        function buyitnow() {
+            let now = new Date().getTime();
+            if (now - previous >=1000) {
+                container.innerHTML = init ++;
+                previous = now;
+            }
+        }
+        container.onmousemove = buyitnow;
+        //函数式编程是过程抽象
+        //高阶函数：输入是函数，输出也是函数
+        const container1 = document.getElementById('container1');
+        function addCart() {
+            console.log('addCart');
+        }
+        // container1.onmousemove = _.throttle(addCart, 1000)调用引入的方法
+        container1.onmousemove = myThrottle(addCart, 1000)
+
+        function myThrottle(func, wait) {
+            let previous = 0;
+            return function() {
+                let now = new Date().getTime();
+                if (now - previous >=wait) {
+                    func();
+                    previous = now;
+                }
+            }
+        }
+    </script>
+</body>
+</html>
