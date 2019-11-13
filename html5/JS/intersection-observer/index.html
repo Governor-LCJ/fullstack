@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .scrollContainer{
+            width: 200px;
+            height: 600px;
+            border: 1px solid #000;
+            overflow-y: scroll;
+        }
+        .targetBox{
+            width: 100px;
+            height: 100px;
+            background-color: rgb(231, 19, 19);
+            margin-top: 900px;
+        }
+    </style>
+</head>
+<body>
+    <!-- 交叉观察 -->
+    <div class="scrollContainer">
+        <div class="targetBox">
+
+        </div>
+    </div>
+    
+    <script>
+        const insectionObs = new IntersectionObserver(
+            (entries) => {
+                entries.forEach(entry => {
+                    if(entry.isIntersecting) {
+                        console.log(entry)
+                    }
+                })
+        },
+        {
+            threshold: [0.3, 0.5, 1],
+        }
+    )
+        insectionObs.observe(document.querySelector('.targetBox'))
+    </script>
+</body>
+</html>
