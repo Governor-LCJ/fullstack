@@ -59,6 +59,7 @@
     </div>
     <!-- 购物车 -->
     <shopcart
+      ref="shopcart"
       :selectFoods = "selectFoods"
       :deliveryPrice = "seller.deliveryPrice"
       :minPrice = "seller.minPrice"
@@ -92,7 +93,7 @@ export default {
   created () {
     this.$http.get('http://localhost:8080/static/goods.json')
       .then((res) => {
-        console.log(res)
+        // console.log(res)
         if (res.data.errno === 0) {
           this.goods = res.data.data
           this.$nextTick(() => {
@@ -158,8 +159,15 @@ export default {
         this.listHeight.push(height)
       }
     },
-    addFood () {
-
+    addFood (target) {
+      // console.log(target)
+      this._drop(target)
+    },
+    _drop (target) {
+      //体验优化， 异步执行下落动画
+      this.$nextTick(() => {
+        this.$refs.shopcart.drop(target)
+      })
     }
   }
 }
