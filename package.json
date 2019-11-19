@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "baidu-aip-sdk": "^2.4.4",
     "inquirer": "^7.0.0",
     "vant": "^2.2.13"
   }

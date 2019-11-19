@@ -1,0 +1,12 @@
+{
+  "name": "car-number",
+  "version": "1.0.0",
+  "description": "- AI已经成为了水和电，百度大脑\r sdk\r -海量数据，构建好了",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
