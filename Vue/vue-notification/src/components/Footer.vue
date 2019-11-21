@@ -3,7 +3,7 @@
 </template>
 
 <script>
-import notification from "./notification.js"
+import notification from "./notification777"
 
 export default {
   mounted() {
