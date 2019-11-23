@@ -22,7 +22,7 @@ export default {
   },
   methods: {
     leftEvent () {
-      this.$store.dispatch('setShowSide',true)
+      this.$store.dispatch('setShowSidebar', true)
     }
   }
 }
@@ -49,7 +49,7 @@ export default {
     flex 1
     text-align center
     font-size 18px
-    color #ffffff
+    color #fff
     font-weight 500
     overflow hidden
     text-overflow ellipsis

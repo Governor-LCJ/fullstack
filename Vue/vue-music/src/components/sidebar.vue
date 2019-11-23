@@ -5,7 +5,7 @@
         <div class="avatar">
           <img src="https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=1919326320,3728667730&fm=26&gp=0.jpg" alt="">
         </div>
-        <div class="name">lcj</div>
+        <div class="name">蜗牛</div>
       </div>
       <div class="menu">
         <ul>
@@ -45,7 +45,6 @@
               <span>设置</span>
             </router-link>
           </li>
-
         </ul>
       </div>
     </div>
@@ -67,7 +66,7 @@ export default {
   },
   methods: {
     _hidebar () {
-      this.$store.dispatch('setShowSide',false)
+      this.$store.dispatch('setShowSidebar', false)
     }
   }
 }
