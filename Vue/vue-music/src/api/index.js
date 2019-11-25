@@ -52,5 +52,8 @@ export default {
   },
   MusicSearch (params) {
     return fetchGet('/search', params)
+  },
+  MusicUrl (id) {
+    return fetchGet ('/song/url', {id})
   }
 }
