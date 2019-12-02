@@ -1,7 +1,7 @@
 var mysql = require('mysql')
 var config = require('./defaultConfig')
 
-//创建线程池
+// 创建线程池
 var pool = mysql.createPool({
   host: config.database.HOST,
   user: config.database.USERNAME,
@@ -10,8 +10,8 @@ var pool = mysql.createPool({
   port: config.database.PORT
 })
 
-//统一连接数据库的方法
-let allServices = {
+// 统一链接数据库的方法
+let allServies = {
   query: function (sql, values) {
     return new Promise((resolve, reject) => {
       pool.getConnection(function (err, connection) {
@@ -24,7 +24,7 @@ let allServices = {
             } else {
               resolve(rows)
             }
-            connection.release()
+            connection.release() //释放连接池
           })
         }
       })
@@ -32,12 +32,12 @@ let allServices = {
   }
 }
 
-// 读取所有 users 表 数据, 测试数据连接
-let getAllusers = function () {
-  let _sql = `select * form users;`
-  return allServices.query(_sql)
+//读取所有user表数据，测试数据连接
+let getAllUsers = function () {
+  let _sql = `select * from users`
+  return allServies.query(_sql)
 }
 
 module.exports = {
-  getAllusers
+  getAllUsers
 }
