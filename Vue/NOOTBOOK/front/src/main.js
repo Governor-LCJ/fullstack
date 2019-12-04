@@ -8,6 +8,7 @@ import 'vant/lib/index.css'
 import axios from 'axios'
 import 'amfe-flexible'
 
+// use: 将组件加载到vue的原型链上
 Vue.use(Swipe).use(SwipeItem).use(Icon).use(Field).use(ActionSheet).use(Toast).use(Panel).use(Uploader).use(axios)
 Vue.prototype.$http = axios
 
