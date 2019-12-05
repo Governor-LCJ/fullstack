@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <iframe src="" frameborder="0"></iframe>
+  <iframe src="" frameborder="0"></iframe>
+
+  <script>
+    function fn() {
+      console.log(this.length)
+    }
+    fn()
+    // window.length  window 节点的个数
+
+    var bar = {
+      length: 5,
+      fn1: function() {
+        fn();
+        arguments
+        // 每一个普通函数都可以用的一个对象 可以获取函数传参
+      }
+    }
+    foo(1, 2, 3)
+    function foo() {
+      // 类数组对象
+      // arguments[0] arguments[1]
+      // .length
+      console.log(arguments)
+
+      // 类数组 转成 真数组
+      // Array.from()
+      console.log(typeof arguments.map)
+    }
+  </script>
+</body>
+</html>
