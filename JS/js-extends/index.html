@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  
+  <script>
+    function Person() {
+      this.age = 30
+    }
+    Person.prototype.say = function () {}
+    var p = new Person();
+      console.log(p);
+      console.log(p.__proto__ === Person.prototype);
+      console.log(Person.prototype.constructor === Person);
+      console.log(p.__proto__ === Person.prototype);
+      console.log(Person.prototype.__proto__ === Object.prototype);
+      console.log(Object.prototype.__proto__ === null);      
+
+    function Student() {}
+    // Student.prototype.__proto__ = Person.prototype;
+    // 1. Student.prototype = new Person();
+    // 2. Object.create  复制
+    function myCreate(obj) {
+      var F = function() {}
+      F.prototype = obj;
+      return new F()
+    }// 不会调用Preson，只调用临时的F，只是将Person的值塞过去
+    // Student.prototype = Object.create(Person.prototype)
+    Student.prototype = myCreate(Person.prototype)
+    var s = new Student();
+    // 3. es6 extends 使用方法
+    function Student1() {
+      // 继承属性
+      Person.call(this)
+    }
+    // 继承方法
+    Student1.prototype = myCreate(Person.prototype)
+    // 修正 constructor
+    Student1.prototype.constructor = Student1
+    var ss1 = new Student1();
+  </script>
+</body>
+</html>
