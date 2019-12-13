@@ -5,6 +5,7 @@
     <i-button size="large" @on-click="btn2">大按钮</i-button>
     <i-button size="large" ref="sure" @click.native="osure" @sendmsg="getmsg">大按钮2</i-button>
     <div>{{mess}}</div>
+    <button @click="showToast">button</button>
   </div>
 </template>
 
@@ -22,6 +23,9 @@ export default {
     'i-button': button
   },
   methods: {
+    showToast () {
+      this.$toast('网络异常')
+    },
     btn1 () {
       console.log("我是小按钮")
     },
