@@ -1,0 +1,18 @@
+{
+  "name": "my-cli",
+  "version": "1.0.0",
+  "description": "vue init projectName\r   1. 下载 git\r   2. 收集配置\r   3. 生成文件",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "bin": {
+    "mycli": "./bin/mycli"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "commander": "^4.0.1"
+  }
+}

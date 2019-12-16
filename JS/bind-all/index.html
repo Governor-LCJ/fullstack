@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    function sum(a, b, c) {
+      return a + b + c;
+    }
+    // 对 sum 这个函数的柯里化
+    // bind 返回的一个函数
+    var currySum = sum.bind(null, 1, 2);
+    var res = currySum(3);
+    console.log(res)
+
+    function matchStr(reg, str) {
+      return str.match(reg);
+    }
+    // +0~任意长度 \s 空白符 g：global //flag
+    console.log(matchStr(/\s+/g, 'a b'));   // 查找空白
+    console.log(matchStr(/\s+/g, 'acb '));
+    const hasWhiteSpace = matchStr.bind(null, /\s+/g);
+    console.log(hasWhiteSpace('a, b, c'))
+    console.log(hasWhiteSpace('ab '))
+
+    const hasNum = matchStr.bind(null, /[0-9]+/g);
+    console.log(hasNum('123abc'))
+    console.log(hasNum('cbd'))
+
+    // 判断类型
+    function type(type,value) {
+      return Object.prototype.toString
+      .call(value) === `[Object${type}]`
+    }
+    console.log(type('Array', [1, 2, 3, 4]))
+    console.log(type('Array', [1]))
+    const isArray = type.bind(null, 'Array')
+    console.log(type(isArray([7, 8])))
+
+    function foo() {
+      console.log(this)
+      this.a = 123;
+    }
+    let obj = {};
+    let Bar = foo.bind(obj);
+    let b = new Bar();
+    // console.log(b);
+    // foo this  foo -> Bar -> b
+    // new > call / apply / bind
+  </script>
+</body>
+</html>

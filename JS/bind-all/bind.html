@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    Function.prototype.myBind = function(oThis, ...aArgs) {
+      // console.log(this === sum);    // true
+      // 先获取要绑定的函数
+      var fToBind = this;
+      var fBound = function(...bArgs) {
+        // call apply
+        // 拿到所有参数
+        // 绑定 this 没有考虑优先级
+        // 如果被 new 调用 this 指向 new 完的 实例
+        // 否则就是 第一个参数 oThis
+        let isNew = this instanceof fBound;
+        return fToBind.apply(oThis, aArgs.concat(bArgs));
+      }
+      return fBound;
+    }
+    function sum(a, b, ){
+      return a + b + c;
+    }
+    sum.prototype.abc = function() {}
+      // 第一步调用
+    var a = sum.myBind(null, 1);
+      // 第二步调用
+      console.log('原型对象：' + a.prototype.abc)
+    a(2, 3)
+
+    function Foo() {}
+    Foo.prototype.say = function() {
+      console.log(this)
+    }
+     var f = new Foo();
+     f.say();
+  </script>
+</body>
+</html>
